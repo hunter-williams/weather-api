@@ -62,11 +62,25 @@ function renderForcast (data){
 
 }
 function createCard(forecast){
-    console.log('wind',forecast.wind.speed)
-    console.log('humidity',forecast.main.humidity)
-    console.log('temp',forecast.main.temp)
-    console.log('main',forecast.weather[0].main)
+    var wind = forecast.wind.speed
+    var humidity = forecast.main.humidity
+    var temp = forecast.main.temp
+    var description = forecast.weather[0].main
     var icon = forecast.weather[0].icon
     var iconURL = `http://openweathermap.org/img/wn/${icon}.png`
-    document.querySelector('img').setAttribute('src',iconURL)
+    
+
+    var windEl = document.createElement('p')
+    var humidityEl = document.createElement('p')
+    var tempEl = document.createElement('p')
+    var descriptionEl = document.createElement('p')
+    var iconEl = document.createElement('img')
+    windEl.innerHTML = wind
+    humidityEl.innerHTML = humidity
+    tempEl.innerHTML = temp
+    descriptionEl.innerHTML = description
+    iconEl.setAttribute('src',iconURL)
+    var card = document.createElement('div')
+    card.append(windEl,humidityEl,tempEl,descriptionEl,iconEl)
+    document.getElementById('container').append(card)
 }
