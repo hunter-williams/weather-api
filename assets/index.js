@@ -52,6 +52,8 @@ function searchSubmit (){
     //e.preventDefault()
     var search = searchInput.value.trim()
     getCord(search)
+    localStorage.setItem('search',JSON.stringify(search) )
+    console.log(localStorage, 'localStorage')
 }
 
 function renderForcast (data){
@@ -75,12 +77,15 @@ function createCard(forecast){
     var tempEl = document.createElement('p')
     var descriptionEl = document.createElement('p')
     var iconEl = document.createElement('img')
-    windEl.innerHTML = wind
-    humidityEl.innerHTML = humidity
-    tempEl.innerHTML = temp
-    descriptionEl.innerHTML = description
+
+    windEl.innerHTML = 'wind  ' + wind
+    humidityEl.innerHTML = 'humidity  ' + humidity
+    tempEl.innerHTML = 'temp  ' + temp
+    descriptionEl.innerHTML = 'description  ' + description
     iconEl.setAttribute('src',iconURL)
+
     var card = document.createElement('div')
+    card.setAttribute('class','card')
     card.append(windEl,humidityEl,tempEl,descriptionEl,iconEl)
     document.getElementById('container').append(card)
 }
