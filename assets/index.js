@@ -89,3 +89,14 @@ function createCard(forecast){
     card.append(windEl,humidityEl,tempEl,descriptionEl,iconEl)
     document.getElementById('container').append(card)
 }
+
+//function showHistroy(){
+    document.querySelector('input').addEventListener('click',()=> {
+        // console.log(localStorage.getItem('search'))
+        // var searchEl = document.createElement('p')
+        // searchEl.innerHTML = localStorage.getItem('search')
+        document.getElementById('history').innerHTML = localStorage.getItem('search')
+    })
+//}
+
+
